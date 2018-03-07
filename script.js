@@ -8,7 +8,7 @@ let clockcounter = 30;
 let score = 0;
 let bulletArray = [];
 let enemyArray = [];
-let totalEnemies = 50;
+let totalEnemies = 30;
 let fire = false;
 let bgimg;
 let bgy = 0;
@@ -30,7 +30,7 @@ function setup(){
   enemyimg = loadImage("https://cdn.glitch.com/f964c8a2-d153-4788-abea-655acbc4b83d%2Fenemy2.png?1510275464215");  // Load the image
   setInterval(clockTick,1000);
   for (let i=0; i<totalEnemies;i++){
-    enemyArray[i] = new Enemy(random(0,width),random(0-i*80),25);
+    enemyArray[i] = new Enemy(random(0,width),0-i*90,25);
   }
 }
 
@@ -133,10 +133,10 @@ function checkInput(){
     fire = true;
   }
   if (keyIsDown(LEFT_ARROW))
-    myTri.x-=5;
+    myTri.x-=9;
 
   if (keyIsDown(RIGHT_ARROW))
-    myTri.x+=5;
+    myTri.x+=9;
 
 //   if (keyIsDown(UP_ARROW))
 //     myTri.y-=3;
@@ -231,7 +231,7 @@ class Enemy {
 
   }
   move(){
-    this.y = this.y - random(-3.1,-3.0);
+    this.y = this.y - random(-1.5,-1.0);
     if (this.y>height){
       failSound.play();
       score--;
